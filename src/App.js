@@ -1,24 +1,24 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/reset.css';
+import './css/styles.css';
+import Init from './Init';
+import QuestionList from './QuestionList'
+
+import React, { ReactDOM } from 'react';
+
 
 function App() {
+  const [isInit, setIsInit] = React.useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='layout'>
+        {isInit ? <QuestionList /> : <Init isInit={isInit} setIsInit={setIsInit}/>}
+      </div>
+
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </>
   );
 }
 
