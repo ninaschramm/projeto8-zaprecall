@@ -17,9 +17,6 @@ export default function QuestionList() {
 
     const [askedQuestions, setAskedQuestions] = React.useState(0)
     const [resultList, setResultList] = React.useState([])
-    const [isAnswered, setIsAnswered] = React.useState(false)
-    const [answeredClass, setAnswerClass] = React.useState("answeredQuestion")
-    const [iconName, setIconName] = React.useState("")
         
 
     function askQuestion(index) {
@@ -31,7 +28,7 @@ export default function QuestionList() {
 
     function setCards(card) {
         if (card.questionAsked == true) {
-            return <Card card={card} countAskedQuestions={countAskedQuestions} isAnswered={isAnswered} answeredClass={answeredClass} iconName={iconName}/>
+            return <Card card={card} countAskedQuestions={countAskedQuestions}/>
         }
         else {
             return <div className={`questionIndex index${card.index}`}> Pergunta {card.index} <ion-icon name="play-outline" onClick={() => askQuestion(card.index)}></ion-icon></div>
@@ -44,23 +41,15 @@ export default function QuestionList() {
 
         let newResultList = [...resultList]
         if (gotAnswer === "wrong") {
-            newResultList.push("-")
-            setAnswerClass("answeredQuestion answeredWrong")
-            setIconName("help-circle")
+            newResultList.push({icon: "close-circle", classIcon: "answeredWrong"})
         }
         if (gotAnswer === "almost") {
-            newResultList.push("||")
-            setAnswerClass("answeredQuestion answeredAlmost")
-            setIconName("help-circle")
+            newResultList.push({icon: "help-circle", classIcon: "answeredAlmost"})
         }
         if (gotAnswer === "right") {
-            newResultList.push("+")
-            setAnswerClass("answeredQuestion answeredRight")
-            setIconName("help-circle")
+            newResultList.push({icon: "checkmark-circle", classIcon: "answeredRight"})
         }
         setResultList(newResultList)
-
-        setIsAnswered(true)
     }
 
 

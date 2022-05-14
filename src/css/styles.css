@@ -202,3 +202,19 @@ div .answersCount {
     height: 100%;
     width: 100%;
 }
+
+div .answeredQuestion {
+    text-decoration: line-through;
+}
+
+div .answeredWrong {
+    color: #FF3030;
+}
+
+div .answeredAlmost {
+    color: #FF922E;
+}
+
+div .answeredRight {
+    color: #2FBE34;
+}

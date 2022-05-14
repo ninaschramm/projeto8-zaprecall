@@ -3,7 +3,7 @@ export default function Footer(props) {
     return (
         <div className="footer">
             <div>{props.askedQuestions}/{total} CONCLUÍDOS</div>
-            <div className="answersCount">{props.resultList}</div>
+            <div>{props.resultList.map((result) => <ion-icon class={result.classIcon} name={result.icon}></ion-icon>)}</div>
         </div>
     )
 }
