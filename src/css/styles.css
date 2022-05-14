@@ -138,6 +138,58 @@ div.questionAsked {
     line-height: 22px;
     color: #333333;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 15px;
     margin-top: 25px;
+}
+
+div.questionAsked ion-icon {
+    width: 30px;
+    height: 20px;
+    align-self: right; 
+}
+
+div.questionAsked ion-icon:hover {
+    cursor: pointer;
+}
+
+div.questionAskedIcon {
+    width: 260px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+div .gotAnswer {
+    width: 260px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gotAnswerBtn {
+    width: 85px;
+    height: 37.17px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gotAnswerBtn.wrong {
+    background-color: #FF3030;
+}
+
+.gotAnswerBtn.almost {
+    background-color: #FF922E;
+}
+
+.gotAnswerBtn.right {
+    background-color: #2FBE34;
 }

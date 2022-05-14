@@ -1,6 +1,7 @@
 import smalllogo from './img/logo-pequeno.png';
 import Footer from './Footer';
 import React from 'react';
+import Card from './Card';
 
 export default function QuestionList() {
     const [deck, setDeck] = React.useState([
@@ -25,12 +26,14 @@ export default function QuestionList() {
 
     function setCards(card) {
         if (card.questionAsked == true) {
-            return <div className={`questionAsked index${card.index}`}> {card.question} </div>
+            return <Card card={card}/>
         }
         else {
             return <div className={`questionIndex index${card.index}`}> Pergunta {card.index} <ion-icon name="play-outline" onClick={() => askQuestion(card.index)}></ion-icon></div>
         }
-    } 
+    }
+
+ 
 
     return (
         <div className="qList layout">
