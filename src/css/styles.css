@@ -71,6 +71,7 @@ div.footer {
     color: #333333;
     z-index: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -192,4 +193,12 @@ div .gotAnswer {
 
 .gotAnswerBtn.right {
     background-color: #2FBE34;
+}
+
+div .answersCount {
+    background-color: #D70900;
+    color: #FFFFD5;
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
 }

@@ -1,7 +1,7 @@
 import React from "react";
+import AnswerCard from "./AnswerCard";
 
-export default function Card(props) {
-    let card = props.card
+export default function Card({card, countAskedQuestions, isAnswered, answeredClass}) {
     const [isAnswer, setIsAnswer] = React.useState(false)
 
     function seeAnswer(card) {
@@ -10,11 +10,7 @@ export default function Card(props) {
    
     return (
         isAnswer ? 
-        <div className={`questionAsked index${card.index}`}> {card.answer} <div className='gotAnswer'>
-            <button className="gotAnswerBtn wrong">Não lembrei</button>
-            <button className="gotAnswerBtn almost">Quase não lembrei</button>
-            <button className="gotAnswerBtn right">Zap!</button>
-            </div></div> 
+        <AnswerCard card={card} countAskedQuestions={countAskedQuestions} isAnswered={isAnswered} answeredClass={answeredClass} />
         : 
         <div className={`questionAsked index${card.index}`}> {card.question} <div className='questionAskedIcon'><ion-icon name="swap-horizontal" onClick={() => seeAnswer(card)}></ion-icon></div></div>
     )

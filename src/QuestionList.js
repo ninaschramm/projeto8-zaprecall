@@ -15,7 +15,12 @@ export default function QuestionList() {
         {index: 8, question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente", questionAsked: false},
     ])
 
-    // const [questionAsked, setQuestionAsked] = React.useState(false)
+    const [askedQuestions, setAskedQuestions] = React.useState(0)
+    const [resultList, setResultList] = React.useState([])
+    const [isAnswered, setIsAnswered] = React.useState(false)
+    const [answeredClass, setAnswerClass] = React.useState("answeredQuestion")
+    const [iconName, setIconName] = React.useState("")
+        
 
     function askQuestion(index) {
         let i = index-1;
@@ -26,14 +31,38 @@ export default function QuestionList() {
 
     function setCards(card) {
         if (card.questionAsked == true) {
-            return <Card card={card}/>
+            return <Card card={card} countAskedQuestions={countAskedQuestions} isAnswered={isAnswered} answeredClass={answeredClass} iconName={iconName}/>
         }
         else {
             return <div className={`questionIndex index${card.index}`}> Pergunta {card.index} <ion-icon name="play-outline" onClick={() => askQuestion(card.index)}></ion-icon></div>
         }
+    }    
+
+    function countAskedQuestions (gotAnswer) {
+        let askedQuestionsTotal = askedQuestions + 1
+        setAskedQuestions(askedQuestionsTotal)
+
+        let newResultList = [...resultList]
+        if (gotAnswer === "wrong") {
+            newResultList.push("-")
+            setAnswerClass("answeredQuestion answeredWrong")
+            setIconName("help-circle")
+        }
+        if (gotAnswer === "almost") {
+            newResultList.push("||")
+            setAnswerClass("answeredQuestion answeredAlmost")
+            setIconName("help-circle")
+        }
+        if (gotAnswer === "right") {
+            newResultList.push("+")
+            setAnswerClass("answeredQuestion answeredRight")
+            setIconName("help-circle")
+        }
+        setResultList(newResultList)
+
+        setIsAnswered(true)
     }
 
- 
 
     return (
         <div className="qList layout">
@@ -41,7 +70,7 @@ export default function QuestionList() {
             <div className="cards">
                 {deck.map((card) => setCards(card))}
             </div>
-            <Footer deck={deck}/>
+            <Footer deck={deck} askedQuestions={askedQuestions} resultList={resultList}/>
         </div>
        
     )
