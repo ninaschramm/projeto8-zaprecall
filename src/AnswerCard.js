@@ -28,8 +28,8 @@ export default function AnswerCard({card, countAskedQuestions}) {
         
     return (
         isAnswered?
-        <div className={`questionIndex index${card.index} ${answeredClass}`}> Pergunta {card.index} <ion-icon name={`${iconName}`}></ion-icon></div> :
-        <div className={`questionAsked index${card.index}`}> {card.answer} <div className='gotAnswer'>
+        <div key={card.index} className={`questionIndex index${card.index} ${answeredClass}`}> Pergunta {card.index} <ion-icon name={`${iconName}`}></ion-icon></div> :
+        <div key={card.index} className={`questionAsked index${card.index}`}> {card.answer} <div className='gotAnswer'>
             <button className="gotAnswerBtn wrong" onClick={() => answerThis("wrong")}>Não lembrei</button>
             <button className="gotAnswerBtn almost" onClick={() => answerThis("almost")}>Quase não lembrei</button>
             <button className="gotAnswerBtn right" onClick={() => answerThis("right")}>Zap!</button>

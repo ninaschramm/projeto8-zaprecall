@@ -17,6 +17,20 @@ export default function QuestionList() {
 
     const [askedQuestions, setAskedQuestions] = React.useState(0)
     const [resultList, setResultList] = React.useState([])
+    // const [gameOver, setGameOver] = React.useState(false)
+    const [allRight, setAllRight] = React.useState(true)
+
+    
+
+    function isAllRight() {
+        for (let i=0; i<resultList.length; i++) {
+            if (resultList.icon === "close-circle") {
+                setAllRight(false)
+            }
+        }
+    }
+
+
         
 
     function askQuestion(index) {
@@ -27,17 +41,20 @@ export default function QuestionList() {
     }
 
     function setCards(card) {
-        if (card.questionAsked == true) {
+        if (card.questionAsked === true) {
             return <Card card={card} countAskedQuestions={countAskedQuestions}/>
         }
         else {
-            return <div className={`questionIndex index${card.index}`}> Pergunta {card.index} <ion-icon name="play-outline" onClick={() => askQuestion(card.index)}></ion-icon></div>
+            return <div key={card.index} className={`questionIndex index${card.index}`}> Pergunta {card.index} <ion-icon name="play-outline" onClick={() => askQuestion(card.index)}></ion-icon></div>
         }
     }    
 
     function countAskedQuestions (gotAnswer) {
         let askedQuestionsTotal = askedQuestions + 1
         setAskedQuestions(askedQuestionsTotal)
+
+        
+        console.log(askedQuestionsTotal === deck.length)
 
         let newResultList = [...resultList]
         if (gotAnswer === "wrong") {
@@ -50,8 +67,20 @@ export default function QuestionList() {
             newResultList.push({icon: "checkmark-circle", classIcon: "answeredRight"})
         }
         setResultList(newResultList)
+
+        isAllRight()
     }
 
+    // function isGameOver() {
+    //     if (askedQuestions === deck.length) {
+    //         setGameOver(true)
+    //         isAllRight()
+    //     }
+    // }
+
+    
+
+  
 
     return (
         <div className="qList layout">
@@ -59,7 +88,7 @@ export default function QuestionList() {
             <div className="cards">
                 {deck.map((card) => setCards(card))}
             </div>
-            <Footer deck={deck} askedQuestions={askedQuestions} resultList={resultList}/>
+            <Footer deck={deck} askedQuestions={askedQuestions} resultList={resultList} allRight={allRight}/>
         </div>
        
     )

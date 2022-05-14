@@ -12,6 +12,6 @@ export default function Card({card, countAskedQuestions}) {
         isAnswer ? 
         <AnswerCard card={card} countAskedQuestions={countAskedQuestions}/>
         : 
-        <div className={`questionAsked index${card.index}`}> {card.question} <div className='questionAskedIcon'><ion-icon name="swap-horizontal" onClick={() => seeAnswer(card)}></ion-icon></div></div>
+        <div  key={card.index} className={`questionAsked index${card.index}`}> {card.question} <div className='questionAskedIcon'><ion-icon name="swap-horizontal" onClick={() => seeAnswer(card)}></ion-icon></div></div>
     )
 }
