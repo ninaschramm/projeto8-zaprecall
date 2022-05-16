@@ -17,9 +17,9 @@ export default function Footer(props) {
             }
             <div>{props.askedQuestions}/{total} CONCLUÍDOS</div>
             <div>{props.resultList.map((result) => <ion-icon class={result.classIcon} name={result.icon}></ion-icon>)}</div>
-            {gameOver ?
+            {/* {gameOver ?
             <button className="startOver" onClick={props.startOver}>Reiniciar Recall</button> :
-            <div></div>}
+            <div></div>} */}
             
 
         </div>

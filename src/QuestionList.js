@@ -28,7 +28,7 @@ export default function QuestionList({deck, setDeck}) {
 
     function setCards(card) {        
         if (card.questionAsked === true) {
-            return <Card card={card} countAskedQuestions={countAskedQuestions} />
+            return <Card card={card} countAskedQuestions={countAskedQuestions}/>
         }
         else {
             return <div key={card.index} className={`questionIndex index${card.index}`}> Pergunta {card.index} <ion-icon name="play-outline" onClick={() => askQuestion(card.index)}></ion-icon></div>
@@ -67,8 +67,8 @@ export default function QuestionList({deck, setDeck}) {
 
     function startOver() {
         setDeck(([
-            {index: 1, question:"O que é JSX?", answer: "Uma extensão de linguagem do JavaScript", questionAsked: false},
-            {index: 2, question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces", questionAsked: false},
+            {index: 1, question:"O que é JSX?", answer: "Uma extensão de linguagem do JavaScript", questionAsked: false, questionAnswered: false},
+            {index: 2, question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces", questionAsked: false, questionAnswered: false},
             {index: 3, question: "Componentes devem iniciar com __", answer: "letra maiúscula", questionAsked: false},
             {index: 4, question: "Podemos colocar __ dentro do JSX", answer: "expressões", questionAsked: false},
             {index: 5, question: "O ReactDOM nos ajuda __", answer: "interagindo com a DOM para colocar componentes React na mesma", questionAsked: false},
@@ -84,6 +84,7 @@ export default function QuestionList({deck, setDeck}) {
 
     }
 
+  
 
     return (
         <div className="qList layout">
