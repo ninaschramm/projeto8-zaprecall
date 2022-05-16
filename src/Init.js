@@ -4,6 +4,19 @@ export default function Init(props) {
 
     function initGame(){
         props.setIsInit(true)
+        shuffle(props.deck)
+    }
+
+    function shuffle(deck) {
+        let newDeck = deck.sort(comparador)
+        for (let i=0; i<deck.length; i++) {
+            newDeck[i].index = i + 1
+        }
+        props.setDeck(newDeck)
+      }
+
+    function comparador() { 
+        return Math.random() - 0.5; 
     }
 
     return (

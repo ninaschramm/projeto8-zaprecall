@@ -1,13 +1,20 @@
 import React from "react";
 
-export default function AnswerCard({card, countAskedQuestions}) {
+export default function AnswerCard({card, countAskedQuestions, setDefault}) {
 
     const [isAnswered, setIsAnswered] = React.useState(false)
     const [answeredClass, setAnswerClass] = React.useState("answeredQuestion")
     const [iconName, setIconName] = React.useState("")
+    const [counter, setCounter] = React.useState(0)
+    const [gameOver, setGameOver] = React.useState(false)
 
     function answerThis(gotAnswer){
-
+        setCounter(counter +1)
+        if (counter === 8) {
+            setGameOver(true)
+            setIsAnswered(false)
+            setCounter(0)
+        }
         setIsAnswered(true)
 
         countAskedQuestions(gotAnswer)
